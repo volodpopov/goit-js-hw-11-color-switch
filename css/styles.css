@@ -1,0 +1,16 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.btn{
+  margin: 20px;
+  cursor: pointer;
+  outline: none;
+  height: 10vh;
+  width: 10vw;
+  border-radius: 20px;
+  border: solid 2px;
+  font-size: 30px;
+}
