@@ -12,8 +12,8 @@ const colors = [
 const refs = {
   btnStart: document.querySelector('button[data-action="start"]'),
   btnStop: document.querySelector('button[data-action="stop"]'),
-  body: document.querySelector('body')
-}
+  body: document.querySelector('body'),
+};
 
 const randomIntegerFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -28,14 +28,21 @@ function setColor() {
 
 const timer = {
   intervalId: null,
+  isActive: false,
   start() {
-    refs.btnStart.setAttribute('disabled', true);
+    if (this.isActive) {
+      return;
+    }
+    this.isActive = true;
+    refs.btnStart.classList.add('btn-notactive');
+    setColor()
     this.intervalId = setInterval(() => {
       setColor();
     }, 1000);
   },
   stop() {
-    refs.btnStart.removeAttribute('disabled');
+    this.isActive = false;
+    refs.btnStart.classList.remove('btn-notactive');
     clearInterval(this.intervalId);
   },
 };
